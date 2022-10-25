@@ -1,0 +1,125 @@
+-gallery_images = ["hamburger.png","hot-cake.png"]
+!!!5
+%html{class:"no-js", lang:""}
+  %head
+    %meta{charset:"utf-8"}
+    %meta{:"http-equiv" => "x-ua-compatible", content:"ie=edge"}
+    %title La mejor opcion en software ERP
+    %meta{name:"description", content:"Encuentra una solucion eficaz, de calidad y a  buen precio a tus porblemas de gestion de recursos en tu empresa con Octo-Op."}
+    %meta{content:"#{gallery_images.length}", :"data-name" => "image_counter"}
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1"}
+    %link{rel:"apple-touch-icon", href:"apple-touch-icon.png"}
+    %link{rel:"stylesheet", href:"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"}
+    %link{rel:"stylesheet", href:"css/normalize.css"}
+    %link{rel:"stylesheet", href:"css/main.css"}
+    %link{href:'https://fonts.googleapis.com/css?family=Dancing+Script', rel:'stylesheet', type:'text/css'}
+    %link{href:"https://cdn.jsdelivr.net/flexboxgrid/6.3.0/flexboxgrid.min.css", rel:"stylesheet"}
+    %script{src:"js/vendor/modernizr-2.8.3.min.js"}
+  %body
+    ="<!--[if lt IE 8]>"
+    %p{class:"browserupgrade"}
+      Estás usando un navegador
+      %strong desactualizado.
+      Por favor
+      %a{href:"http://browsehappy.com/"}
+        actualiza tu navegador
+      para una mejor experiencia
+    ="<![endif]-->"
+
+    .video-container
+      / Width and height attrs are ok on media and images
+      %video{autoplay:true, width:"1280", height:"720",poster:"",loop:true}
+        %source{type:"video/mp4",src:"/videos/mp4/v.mp4"}
+        %source{type:"video/webm",src:"/videos/webm/v.webm"}
+
+    .row.middle-xs.full-height.center-xs.up.relative
+      -catalogo = ["Quienes Somos","Clientes","Contacto","Productos"]
+      %nav.fixed.right.top.up.main-nav#navigation
+        %ul.list-inline
+          -catalogo.each do |item|
+            %li
+              %a.medium= item
+      .col-xs-12
+        .box.main-content
+          %img{src:"/imgs/logo.png", alt:"Logo Octo-OP", width:200, height:145}
+          %h1.white-text.title.lobster.no-margin 
+          %p#is_open.white-text.slim.top-space
+            %span.glyphicon.glyphicon-time
+            %span.text Abierto ahora
+      .absolute.medium.black.large-padding.up--2#description
+        .row
+          .col-xs-8.col-sm-6.moto.white-text Atencion Calida y Pronta a tus Problemas de software ERP
+          .fade.col-sm-6.navigation.col-xs-4
+            %nav.small.text-right.main-nav#responsive-nav
+              %span.glyphicon.glyphicon-catalogo-software.catalogo.white-text.subtitle
+              %ul.list-inline
+                -catalogo.each do |item|
+                  %li
+                    %a.white-text= item
+    .text-center.relative#catalogo
+      .absolute.up#catalogo-title
+      %h2.lobster.title Quienes Somos
+      -catalogo = [{title: "Somos una empresa de software ERP que se enfoca en la gestios de recursos de las PYMES en Colombia", pricing: "10.00",image:"a"},{title: "Brindar soluciones de software a diferentes empresas, ayudando en el proceso de crecimiento de las mismas, supliendo las necesidades de gestión de recursos", pricing: "50.00",image:"b"},{title: "Posicionarse en el mercado de software como la mejor alternativa en Colombia de soluciones para la gestión de recursos y soporte de operación de PYMES.", pricing: "20.00",image:"c"},{title: "Un ecosistema ERP busca cubrir la necesidad de seguimiento de cotizaciones, facturación, gestión de clientes, servicios post venta y generación de estadísticas", pricing: "30.00",image:"d"},{title: "Facebook", pricing: "15.00",image:"Facebook"},{title: "Instagram", pricing: "10.00",image:"Instagram"},{title: "Whastapp", pricing: "10.00",image:"Whastapp"},{title: "Twitter", pricing: "20.00",image:"Twitter"}]
+      .row
+        -catalogo.each do |producto|
+          .col-md-4.col-lg-3.col-sm-6.col-xs-12.food{style:"background-image:url(/imgs/food/#{producto[:image]}-thumb.jpg)"}
+            .screen
+              .row.full-height.middle-xs
+                .col-xs-12
+                  .box
+                    %h3.lobster.white-text.subtitle= producto[:title]
+    #gallery
+      .inner
+        -gallery_images.each do |image|
+          .image{style:"background-image:url(/imgs/food/#{image})"}
+    .container
+      .card.white.relative.black-text.text-center
+        %h3.medium.slim
+          En 
+          %strong.medium.lobster Octo-Op
+          estamos preocupados por tu privaciodad por eso nuestro manejo de datos esta amparada por
+          %strong.lobster.medium Ley de Protección de Datos Personales o Ley 1581 de 2012
+        %p.text-justify.top-space--2 
+          Se busca que el software se adapte a las necesidades de la empresa, habilitando módulos conforme la empresa los necesite y ajustando desde la base de datos, hasta los colores de la interfaz de la app.
+          Se busca que se distribuya por licencias mensuales o anuales, en donde nuestros clientes (Las pymes) puedan manejar el tipo de suscripción.
+
+          %strong.lobster.medium Octo-OP Team
+          .large-paddin.medium.black.text-center.white-text
+            También puedes acceder a este sitio sin conexión a internet
+    .top-space--2.black.big-padding.white-text.full-height#contact
+      .row.middle-xs.full-height
+        .col-xs-12
+          .box
+            %form.step-form#my-form{action:"https://formspree.io/uriel.hdzc@gmail.com",method:"POST"}
+              .row.center-xs
+                .col-xs-12
+                  .box
+                    %p.subtitle Contacto
+                .col-xs-2.col-md-1.text-right
+                  .box
+                    -3.times do |i|
+                      .path-step{class:"#{'active' if i == 0}",data:{position:i+1}}
+                .col-md-5
+                  .box
+                    .fieldset.step.active
+                      %input.input{type:"email",name:"email",placeholder:"Coloca tu correo electrónico",required:true}
+                    .fieldset.step
+                      %input.input{type:"text",name:"name",placeholder:"¿Cuál es tu nombre?",required:true}
+                    .fieldset.step
+                      %textarea.input{name:"body",placeholder:"¿En qué podemos ayudarte?",required:true}
+                      %p.small#info.text-left
+                
+
+    #location
+      #map
+      #messages.black.large-padding.white-text.text-center.medium
+    %script{src:"https://code.jquery.com/jquery-1.12.0.min.js"}
+    %script
+      window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')
+    %script{src:"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"}
+    %script{src:"https://maps.googleapis.com/maps/api/js?key=AIzaSyAZw-hILO285jF31gCS_fzjU3e1pWE4etw&libraries=places"}
+    %script{src:"dist/user_location.js"}
+    %script{src:"dist/maps.js"}
+    %script{src:"dist/path.js"}
+    %script{src:"dist/main.js"}
+    
